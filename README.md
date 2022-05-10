@@ -24,7 +24,10 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+vps: oracle clude
+server: centos 7  
+database: postgresql  
+backend framework: nestjs
 
 ## Installation
 
