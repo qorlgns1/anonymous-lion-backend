@@ -1,5 +1,5 @@
 //명령어: nest g service boards --no-spec (--no-spec: 테스트코드를 생성하지않는다.)
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { v1 as uuid } from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -26,7 +26,13 @@ export class BoardsService {
   }
 
   getBoardById(id: string): Board {
-    return this.boards.find((board) => board.id === id);
+    const findBoard = this.boards.find((board) => board.id === id);
+
+    if (!findBoard) {
+      throw new NotFoundException(`${id}의 게시물을 찾을 수 없습니다.`);
+    }
+
+    return findBoard;
   }
 
   deleteBoard(id: string): void {
