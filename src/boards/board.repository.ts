@@ -6,10 +6,10 @@ import { CreateBoardDto } from './dto/create-board.dto';
 @EntityRepository(Board)
 export class BoardRepository extends Repository<Board> {
   async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
-    const { title, description } = createBoardDto;
+    const { nickname, description } = createBoardDto;
 
     const board = new Board();
-    board.title = title;
+    board.nickname = nickname;
     board.description = description;
     board.status = BoardStatus.PUBLIC;
     await board.save();

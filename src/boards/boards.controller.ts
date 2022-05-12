@@ -58,7 +58,6 @@ export class BoardsController {
     @Param('id', ParseIntPipe) id: number,
     @Body('status', BoardStatusValidationPipe) status: BoardStatus,
   ): Promise<Board> {
-    debugger;
     return this.boardService.updateBoardStatus(id, status);
   }
 

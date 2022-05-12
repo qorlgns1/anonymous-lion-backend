@@ -22,10 +22,10 @@ export class BoardsService {
   }
 
   // createBoard(createBoardDto: CreateBoardDto) {
-  //   const { title, description } = createBoardDto;
+  //   const { nickname, description } = createBoardDto;
   //   const board: Board = {
   //     id: uuid(),
-  //     title,
+  //     nickname,
   //     description,
   //     status: BoardStatus.PUBLIC,
   //   };

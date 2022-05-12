@@ -7,7 +7,7 @@ export class Board extends BaseEntity {
   id: number;
 
   @Column()
-  title: string;
+  nickname: string;
 
   @Column()
   description: string;
