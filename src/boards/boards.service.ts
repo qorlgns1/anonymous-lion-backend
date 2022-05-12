@@ -6,6 +6,7 @@ import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardRepository } from './board.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Board } from './board.entity';
+import { getManager } from 'typeorm';
 @Injectable()
 export class BoardsService {
   constructor(
@@ -18,7 +19,12 @@ export class BoardsService {
   // }
 
   async getAllBoards(): Promise<Board[]> {
-    return this.boardRepository.find();
+    const entityManager = getManager();
+    const boards = await entityManager.query(
+      `select * from board order by id desc;`,
+    );
+
+    return boards;
   }
 
   // createBoard(createBoardDto: CreateBoardDto) {
