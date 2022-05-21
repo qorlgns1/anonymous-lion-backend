@@ -27,6 +27,25 @@ export class BoardsService {
     return boards;
   }
 
+  async getBoards(offset: number): Promise<Board[]> {
+    const entityManager = getManager();
+    const boards = await entityManager.query(
+      `select * from board order by id desc offset ${offset} limit 8;`,
+    );
+
+    return boards;
+  }
+
+  // async add() {
+  //   const entityManager = getManager();
+  //   await entityManager.query(
+  //     `
+  //     INSERT INTO info(id, send, time_now)
+  //       VALUES('test', '테스트중', now());
+  //     `,
+  //   );
+  // }
+
   // createBoard(createBoardDto: CreateBoardDto) {
   //   const { nickname, description } = createBoardDto;
   //   const board: Board = {

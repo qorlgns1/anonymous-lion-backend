@@ -31,6 +31,16 @@ export class BoardsController {
     return this.boardService.getAllBoards();
   }
 
+  @Get('/:offset')
+  getBoard(@Param('offset', ParseIntPipe) offset: number): Promise<Board[]> {
+    return this.boardService.getBoards(offset);
+  }
+
+  // @Get('/test')
+  // all() {
+  //   return this.boardService.add();
+  // }
+
   // @Post('/')
   // @UsePipes(ValidationPipe)
   // createBoard(@Body() createBoardDto: CreateBoardDto): Board {
